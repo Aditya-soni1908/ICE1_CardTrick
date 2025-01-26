@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package card;
-import java.util.Scanner;
 import java.util.Random;
 
 /**
@@ -19,7 +18,6 @@ public class CardTrick {
     {
         Card[] magicHand = new Card[7];
         Random random = new Random();
-        Scanner inp = new Scanner(System.in);
         
         for (int i=0; i<magicHand.length; i++)
         {
@@ -34,14 +32,12 @@ public class CardTrick {
         
         //insert code to ask the user for Card value and suit, create their card
         
-        System.out.println("Enter a card Value (1-13): ");
-        int value = inp.nextInt();
-        System.out.println("Enter a suit (0-3): ");
-        int suit = inp.nextInt();
         
+        
+        // add one luckcard hard code 2,clubs
         Card card = new Card();
-        card.setValue(value);
-        card.setSuit(Card.SUITS[suit]);
+        card.setValue(2);
+        card.setSuit(Card.SUITS[1]);
         // and search magicHand here
         boolean cardfound = false;
         for (Card c : magicHand) {
@@ -55,10 +51,7 @@ public class CardTrick {
         } else {
             System.out.println("Your card is not in magic hand.");
         }
-        // add one luckcard hard code 2,clubs
-        Card card = new Card();
-        card.setValue(2);
-        card.setSuit(Card.SUITS[1]);
+        
     }
     
 }

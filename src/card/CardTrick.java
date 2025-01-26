@@ -3,29 +3,58 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package card;
+import java.util.Scanner;
+import java.util.Random;
 
 /**
  * A class that fills a magic hand of 7 cards with random Card Objects
  * and then asks the user to pick a card and searches the array of cards
  * for the match to the user's card. To be used as starting code in ICE 1
- * @author srinivsi
+ * @author AIDTYA SONI 991760172
+ * @date Modified: 26 Jan, 2025
  */
 public class CardTrick {
     
     public static void main(String[] args)
     {
         Card[] magicHand = new Card[7];
+        Random random = new Random();
+        Scanner inp = new Scanner(System.in);
         
         for (int i=0; i<magicHand.length; i++)
         {
             Card c = new Card();
             //c.setValue(insert call to random number generator here)
+            c.setValue(random.nextInt(0, 13)+1);
             //c.setSuit(Card.SUITS[insert call to random number between 0-3 here])
+            c.setSuit(Card.SUITS[random.nextInt(0, 4)]);
+            
+            magicHand[i] = c;
         }
         
         //insert code to ask the user for Card value and suit, create their card
+        
+        System.out.println("Enter a card Value (1-13): ");
+        int value = inp.nextInt();
+        System.out.println("Enter a suit (0-3): ");
+        int suit = inp.nextInt();
+        
+        Card card = new Card();
+        card.setValue(value);
+        card.setSuit(Card.SUITS[suit]);
         // and search magicHand here
+        boolean cardfound = false;
+        for (Card c : magicHand) {
+            if (card.getValue() == c.getValue() && card.getSuit().equals(c.getSuit())) {
+                cardfound = true;
+                break;
+            }}
         //Then report the result here
+        if (cardfound == true) {
+            System.out.println("Your card is in magic hand.");
+        } else {
+            System.out.println("Your card is not in magic hand.");
+        }
         // add one luckcard hard code 2,clubs
     }
     
